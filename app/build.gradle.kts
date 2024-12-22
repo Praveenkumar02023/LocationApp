@@ -41,7 +41,7 @@ android {
 
 dependencies {
     //location API
-    implementation(libs.play.services.location)
+    implementation(libs.gms.play.services.location)
 
     //viewModel
     implementation(libs.androidx.lifecycle.viewmodel.compose)
@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
