@@ -22,6 +22,7 @@ import com.praveen.locationapp.ui.theme.LocationAppTheme
 import android.Manifest
 import android.widget.Toast
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -53,6 +54,10 @@ fun LocationDisplay(
     context: Context
 ){
     val location = viewModel.location.value
+
+    val address = location?.let {
+        locationUtils.reverseGeocodeLocation(location)
+    }
 
     val requestPermissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestMultiplePermissions(),
@@ -87,6 +92,7 @@ fun LocationDisplay(
        if(location != null){
            Text(text = "Latitude : ${location.latitude}")
            Text(text = "Longitude : ${location.longitude}")
+           Text(text = "Address : $address",modifier = Modifier.padding(16.dp))
        }else{
            Text(
                text = "Location not found"
